@@ -1,5 +1,5 @@
 export default function Home() {
   return (
-    <h1>Hello world - Deezer Clone</h1>
+    <h1>Hello world - Spotify Clone</h1>
   )
 }
