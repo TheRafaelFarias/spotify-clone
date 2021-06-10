@@ -53,3 +53,35 @@ export const SideBarPrimaryButton = styled.button<{
     cursor: pointer;
   }
 `;
+
+export const TracksContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+`
+
+export const TracksContentButton = styled.button<{
+  isSelected?: boolean
+}>`
+  display: flex;
+  align-items: center;
+  padding-left: 1.3em;
+  transition: 0.5s;
+  gap: 1em;
+  border: none;
+  font-weight: 600;
+  background: none;
+
+  color: ${(props) => props.theme.colors.white};
+  opacity: ${(props) => !props.isSelected && "50%"};
+  
+  &:hover {
+    opacity: 95%;
+    cursor: pointer;
+  }
+
+  & > svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+`
