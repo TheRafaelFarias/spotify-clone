@@ -13,7 +13,7 @@ export const HomeContentContainer = styled.div`
 export const SideBarContent = styled.section`
   height: 100vh;
   background-color: ${(props) => props.theme.colors.spaceGray};
-  max-width: 15em;
+  width: 13em;
 `;
 
 export const Logo = styled(SpotifyLogo)`
@@ -26,7 +26,7 @@ export const Logo = styled(SpotifyLogo)`
 export const SideBarPrimaryButtons = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.6em;
   padding-bottom: 1em;
 `;
 
