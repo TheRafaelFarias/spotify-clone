@@ -20,10 +20,13 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const theme = {
+  borderRadiusSmall: "0.3em",
+
   colors: {
     green: "#66D36E",
-    spaceGrey: "#030303",
-    darkGrey: "#121212",
+    spaceGray: "#030303",
+    darkGray: "#b3b3b3",
+    grizzly: "rgba(118, 118, 118, 0.5)",
     white: "#FFFFFF",
   },
 };
