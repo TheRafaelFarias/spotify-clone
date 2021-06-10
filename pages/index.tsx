@@ -9,8 +9,22 @@ import {
   SideBarPrimaryButtons,
 } from "../styles";
 
+enum ButtonType {
+  PRIMARY
+}
+
 const Home = () => {
-  const [sideBarActiveButton, setSideBarActiveButton] = useState(1);
+  const [sideBarPrimaryActiveButton, setSideBarPrimaryActiveButton] =
+    useState(1);
+
+  const changeButton = (number: number, type: ButtonType) => {
+    switch (type) {
+      case ButtonType.PRIMARY:
+        setSideBarPrimaryActiveButton(number);
+        setSideBarTrackActiveButton(0);
+        break;
+    }
+  };
 
   return (
     <HomeContainer>
@@ -19,22 +33,22 @@ const Home = () => {
           <Logo />
           <SideBarPrimaryButtons>
             <SideBarPrimaryButton
-              isSelected={sideBarActiveButton == 1}
-              onClick={() => setSideBarActiveButton(1)}
+              isSelected={sideBarPrimaryActiveButton == 1}
+              onClick={() => changeButton(1, ButtonType.PRIMARY)}
             >
               <FiHome />
               <p>Home</p>
             </SideBarPrimaryButton>
             <SideBarPrimaryButton
-              isSelected={sideBarActiveButton == 2}
-              onClick={() => setSideBarActiveButton(2)}
+              isSelected={sideBarPrimaryActiveButton == 2}
+              onClick={() => changeButton(2, ButtonType.PRIMARY)}
             >
               <FiSearch />
               <p>Search</p>
             </SideBarPrimaryButton>
             <SideBarPrimaryButton
-              isSelected={sideBarActiveButton == 3}
-              onClick={() => setSideBarActiveButton(3)}
+              isSelected={sideBarPrimaryActiveButton == 3}
+              onClick={() => changeButton(3, ButtonType.PRIMARY)}
             >
               <FiBook />
               <p>Your library</p>
