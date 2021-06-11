@@ -58,10 +58,10 @@ export const TracksContent = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 1em;
-`
+`;
 
 export const TracksContentButton = styled.button<{
-  isSelected?: boolean
+  isSelected?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -74,7 +74,7 @@ export const TracksContentButton = styled.button<{
 
   color: ${(props) => props.theme.colors.white};
   opacity: ${(props) => !props.isSelected && "50%"};
-  
+
   &:hover {
     opacity: 95%;
     cursor: pointer;
@@ -84,4 +84,4 @@ export const TracksContentButton = styled.button<{
     width: 1.5em;
     height: 1.5em;
   }
-`
+`;
