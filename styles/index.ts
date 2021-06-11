@@ -85,3 +85,39 @@ export const TracksContentButton = styled.button<{
     height: 1.5em;
   }
 `;
+
+export const Bar = styled.div`
+  margin: 0 auto;
+  margin-top: 0.5em;
+  width: 90%;
+  height: 1px;
+
+  background: ${(props) => props.theme.colors.grizzly};
+`;
+
+export const PlaylistsButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+  font-size: 1em;
+  margin-top: 1.5em;
+  gap: 1em;
+`;
+
+export const PlaylistButton = styled.button<{
+  isSelected?: boolean;
+}>`
+  text-align: left;
+  font-size: 0.8em;
+  border: none;
+  transition: 0.5s;
+  background: none;
+
+  color: ${(props) => props.theme.colors.white};
+  opacity: ${(props) => !props.isSelected && "50%"};
+
+  &:hover {
+    opacity: 95%;
+    cursor: pointer;
+  }
+`;

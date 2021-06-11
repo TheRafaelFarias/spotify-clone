@@ -9,28 +9,42 @@ import {
   SideBarPrimaryButtons,
   TracksContent,
   TracksContentButton,
+  PlaylistsButtons,
+  PlaylistButton,
+  Bar,
 } from "../styles";
 import PlusIcon from "../public/plus-icon.svg";
 
 enum ButtonType {
   PRIMARY,
   TRACK,
+  PLAYLIST,
 }
 
 const Home = () => {
   const [sideBarPrimaryActiveButton, setSideBarPrimaryActiveButton] =
     useState(1);
   const [sideBarTrackActiveButton, setSideBarTrackActiveButton] = useState(0);
+  const [sideBarPlaylistActiveButton, setSideBarPlaylistActiveButton] =
+    useState(0);
 
   const changeButton = (number: number, type: ButtonType) => {
     switch (type) {
       case ButtonType.PRIMARY:
         setSideBarPrimaryActiveButton(number);
         setSideBarTrackActiveButton(0);
+        setSideBarPlaylistActiveButton(0);
         break;
 
       case ButtonType.TRACK:
         setSideBarTrackActiveButton(number);
+        setSideBarPrimaryActiveButton(0);
+        setSideBarPlaylistActiveButton(0);
+        break;
+
+      case ButtonType.PLAYLIST:
+        setSideBarPlaylistActiveButton(number);
+        setSideBarTrackActiveButton(0);
         setSideBarPrimaryActiveButton(0);
         break;
     }
@@ -80,6 +94,39 @@ const Home = () => {
               <p>Liked Songs</p>
             </TracksContentButton>
           </TracksContent>
+          <Bar />
+          <PlaylistsButtons>
+            <PlaylistButton
+              isSelected={sideBarPlaylistActiveButton == 1}
+              onClick={() => changeButton(1, ButtonType.PLAYLIST)}
+            >
+              My Playlist
+            </PlaylistButton>
+            <PlaylistButton
+              isSelected={sideBarPlaylistActiveButton == 2}
+              onClick={() => changeButton(2, ButtonType.PLAYLIST)}
+            >
+              My Playlist
+            </PlaylistButton>
+            <PlaylistButton
+              isSelected={sideBarPlaylistActiveButton == 3}
+              onClick={() => changeButton(3, ButtonType.PLAYLIST)}
+            >
+              My Playlist
+            </PlaylistButton>
+            <PlaylistButton
+              isSelected={sideBarPlaylistActiveButton == 4}
+              onClick={() => changeButton(4, ButtonType.PLAYLIST)}
+            >
+              My Playlist
+            </PlaylistButton>
+            <PlaylistButton
+              isSelected={sideBarPlaylistActiveButton == 5}
+              onClick={() => changeButton(5, ButtonType.PLAYLIST)}
+            >
+              My Playlist
+            </PlaylistButton>
+          </PlaylistsButtons>
         </SideBarContent>
       </HomeContentContainer>
     </HomeContainer>
