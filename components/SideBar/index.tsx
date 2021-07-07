@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { FiBook, FiHeart, FiHome, FiSearch } from "react-icons/fi";
-import PlusIcon from "~/public/plus-icon.svg"
+import PlusIcon from "~/public/plus-icon.svg";
 import {
   Logo,
   SideBarContent,
@@ -26,6 +26,16 @@ const SideBar: React.FC = () => {
   const [sideBarPlaylistActiveButton, setSideBarPlaylistActiveButton] =
     useState(0);
 
+  const [playlists, setPlaylists] = useState<
+    { id: string; number: number; name: string }[]
+  >([
+    {
+      id: "0",
+      number: 1,
+      name: "My Playlist #1",
+    },
+  ]);
+
   const changeButton = (number: number, type: ButtonType) => {
     switch (type) {
       case ButtonType.PRIMARY:
@@ -46,6 +56,35 @@ const SideBar: React.FC = () => {
         setSideBarPrimaryActiveButton(0);
         break;
     }
+  };
+
+  const createNewPlaylist = () => {
+    const lastPlaylistNumber = playlists[0].number;
+
+    const playlist = {
+      id: Math.floor(Math.random() * 20).toString(),
+      number: lastPlaylistNumber + 1,
+      name: `My Playlist #${lastPlaylistNumber + 1}`,
+    };
+    const newArray = [playlist, ...playlists];
+
+    setPlaylists(newArray);
+  };
+
+  const renderPlaylists = () => {
+    return (
+      <PlaylistsButtons>
+        {playlists.map((playlist) => (
+          <PlaylistButton
+            key={playlist.id}
+            isSelected={sideBarPlaylistActiveButton == playlist.number}
+            onClick={() => changeButton(playlist.number, ButtonType.PLAYLIST)}
+          >
+            {playlist.name}
+          </PlaylistButton>
+        ))}
+      </PlaylistsButtons>
+    );
   };
 
   return (
@@ -77,7 +116,7 @@ const SideBar: React.FC = () => {
       <TracksContent>
         <TracksContentButton
           isSelected={sideBarTrackActiveButton == 1}
-          onClick={() => changeButton(1, ButtonType.TRACK)}
+          onClick={createNewPlaylist}
         >
           <PlusIcon />
           <p>Create Playlist</p>
@@ -91,38 +130,7 @@ const SideBar: React.FC = () => {
         </TracksContentButton>
       </TracksContent>
       <Bar />
-      <PlaylistsButtons>
-        <PlaylistButton
-          isSelected={sideBarPlaylistActiveButton == 1}
-          onClick={() => changeButton(1, ButtonType.PLAYLIST)}
-        >
-          My Playlist
-        </PlaylistButton>
-        <PlaylistButton
-          isSelected={sideBarPlaylistActiveButton == 2}
-          onClick={() => changeButton(2, ButtonType.PLAYLIST)}
-        >
-          My Playlist
-        </PlaylistButton>
-        <PlaylistButton
-          isSelected={sideBarPlaylistActiveButton == 3}
-          onClick={() => changeButton(3, ButtonType.PLAYLIST)}
-        >
-          My Playlist
-        </PlaylistButton>
-        <PlaylistButton
-          isSelected={sideBarPlaylistActiveButton == 4}
-          onClick={() => changeButton(4, ButtonType.PLAYLIST)}
-        >
-          My Playlist
-        </PlaylistButton>
-        <PlaylistButton
-          isSelected={sideBarPlaylistActiveButton == 5}
-          onClick={() => changeButton(5, ButtonType.PLAYLIST)}
-        >
-          My Playlist
-        </PlaylistButton>
-      </PlaylistsButtons>
+      {renderPlaylists()}
     </SideBarContent>
   );
 };

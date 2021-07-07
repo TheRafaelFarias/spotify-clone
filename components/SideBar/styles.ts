@@ -2,9 +2,11 @@ import styled from "styled-components";
 import SpotifyLogo from "~/public/logo-spotify.svg";
 
 export const SideBarContent = styled.section`
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.spaceGray};
-  width: 13em;
+  min-width: 208px;
 `;
 
 export const Logo = styled(SpotifyLogo)`

@@ -9,6 +9,8 @@ declare module "styled-components" {
       spaceGray: string
       darkGray: string
       grizzly: string
+      background: string
+      itemsBackground: string
       white: string
     }
   }
