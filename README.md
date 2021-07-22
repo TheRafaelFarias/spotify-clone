@@ -13,4 +13,4 @@ yarn dev
 
 Or you can see the deployed version [here](https://spotifyclone.rafaelfarias.tech)
 
-<img src="./.github/application-preview.png">
+<img src="./.github/application-preview.png"> 

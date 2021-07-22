@@ -4,18 +4,19 @@ import SideBar from "~/components/SideBar/";
 import { Description, Title } from "~/styles/common";
 import { FaPlay } from "react-icons/fa";
 import { MadeForYou, MostPlayedData } from "~/data";
+import { Navbar } from "~/components/Navbar";
 import {
   HomeContainer,
-  HomeContentContainer,
   HomeContent,
+  HomeContentContainer,
+  MostPlayedCard,
+  MostPlayedCardActionsContainer,
+  MostPlayedCardImage,
+  MostPlayedContainer,
+  MostPlayerdCardTitle,
   MusicCards,
   MusicCardsContainer,
-  MostPlayedCard,
-  MostPlayedCardImage,
-  MostPlayedCardActionsContainer,
-  MostPlayerdCardTitle,
   PlayButton,
-  MostPlayedContainer,
 } from "../styles";
 
 const Home = () => {
@@ -40,8 +41,9 @@ const Home = () => {
   });
 
   const renderMusicCards = () => {
-    return MadeForYou.map((music) => (
+    return MadeForYou.map((music, index) => (
       <MusicCard
+        key={index}
         title={music.title}
         description={music.description}
         imageSrc={music.imageSrc}
@@ -52,7 +54,7 @@ const Home = () => {
 
   const renderMostPlayedCards = () => {
     let list = [];
-    const number = cardsDisplayedNumber == 0 ? 2 : cardsDisplayedNumber
+    const number = cardsDisplayedNumber == 0 ? 2 : cardsDisplayedNumber;
     for (let i = 0; i < number; i++) {
       const music = MostPlayedData[i];
       list.push(
@@ -75,6 +77,7 @@ const Home = () => {
       <HomeContentContainer>
         <SideBar />
         <HomeContent>
+          <Navbar />
           <MostPlayedContainer>{renderMostPlayedCards()}</MostPlayedContainer>
           <MusicCards>
             <div>
